@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="M&amp;S Proyectos y Servicios - Consultoría en Sistemas y Procesos. Headhunting, Staffing, optimización de procesos, release management, gestión de servicios TI y herramientas corporativas.">
+    <title>M&amp;S Proyectos y Servicios</title>
+    <link rel="icon" type="image/png" href="ms_assets/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --surface: #ffffff;
+            --ink: #0f1225;
+            --muted: #5b6078;
+            --brand: #6d5ef2;
+            --brand-2: #8b7cf6;
+            --brand-dark: #4c3ddb;
+            --teal: #06d6a0;
+            --teal-2: #0aa07c;
+            --pink: #ff5d8f;
+            --amber: #ffb703;
+            --line: #e7e9f2;
+            --shadow: 0 18px 50px -20px rgba(15, 18, 37, 0.25);
+            --shadow-sm: 0 6px 20px -8px rgba(15, 18, 37, 0.14);
+            --radius: 22px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ===== Header ===== */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 74px 20px 120px;
+            color: #fff;
+            background: linear-gradient(160deg, #221a66 0%, #4c3ddb 45%, #6d5ef2 100%);
+            overflow: hidden;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            width: 560px; height: 560px;
+            background: radial-gradient(circle, rgba(6, 214, 160, 0.35), transparent 65%);
+            top: -200px; left: -140px;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            width: 520px; height: 520px;
+            background: radial-gradient(circle, rgba(255, 93, 143, 0.3), transparent 65%);
+            bottom: -220px; right: -140px;
+        }
+        header .grid-bg {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 44px 44px;
+            mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+        }
+
+        header .logo {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            padding: 18px;
+            background: #fff;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px -12px rgba(0,0,0,0.4);
+            margin-bottom: 24px;
+            display: inline-block;
+            animation: float 5s ease-in-out infinite;
+        }
+        @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+        header h1 {
+            position: relative;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.2rem, 6vw, 3.6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+        }
+        header .tagline {
+            position: relative;
+            margin-top: 12px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+        }
+        header .hero-badge {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 22px;
+            padding: 7px 18px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.25);
+            backdrop-filter: blur(6px);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== Navegación ===== */
+        nav.tabs {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(18px) saturate(140%);
+            border-bottom: 1px solid var(--line);
+        }
+        nav.tabs button {
+            font-family: inherit;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--muted);
+            background: transparent;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.22s ease;
+            box-shadow: inset 0 0 0 0 transparent;
+        }
+        nav.tabs button:hover { color: var(--ink); background: #eef0f8; }
+        nav.tabs button.active {
+            color: #fff;
+            background: linear-gradient(135deg, var(--brand), var(--brand-dark));
+            box-shadow: 0 6px 16px -6px rgba(109, 94, 242, 0.7);
+        }
+
+        /* ===== Contenido ===== */
+        main.container {
+            position: relative;
+            z-index: 2;
+            max-width: 1150px;
+            margin: -70px auto 0;
+            padding: 0 22px 70px;
+        }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: fadeUp 0.45s ease; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .panel-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: clamp(28px, 5vw, 54px);
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        /* ===== Inicio hero sobrepuesto ===== */
+        .home-hero {
+            background: linear-gradient(135deg, #2c2391 0%, #6d5ef2 60%, #8b7cf6 100%);
+            border-radius: var(--radius);
+            color: #fff;
+            padding: clamp(34px, 6vw, 64px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .home-hero::after {
+            content: "";
+            position: absolute;
+            width: 340px; height: 340px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6,214,160,0.4), transparent 70%);
+            top: -120px; right: -60px;
+        }
+        .home-hero h2 {
+            position: relative;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.9rem, 4vw, 2.8rem);
+            font-weight: 700;
+            max-width: 700px;
+            line-height: 1.15;
+        }
+        .home-hero p {
+            position: relative;
+            margin-top: 16px;
+            max-width: 640px;
+            font-size: 1.08rem;
+            color: rgba(255,255,255,0.92);
+        }
+        .home-hero .pill-row {
+            position: relative;
+            margin-top: 28px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .home-hero .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.3);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ===== Secciones ===== */
+        .section { margin-top: 44px; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brand);
+            margin-bottom: 12px;
+        }
+        .eyebrow::before {
+            content: "";
+            width: 24px; height: 3px;
+            border-radius: 99px;
+            background: linear-gradient(90deg, var(--brand), var(--teal));
+        }
+        h2.heading {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            margin-bottom: 30px;
+        }
+
+        /* ===== Cards nosotr@s ===== */
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+        .value-card {
+            background: var(--surface);
+            border-radius: 18px;
+            padding: 28px;
+            border: 1px solid var(--line);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+        .value-card .badge {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .value-card h3 { font-size: 1.06rem; font-weight: 700; margin-bottom: 8px; }
+        .value-card p { color: var(--muted); font-size: 0.94rem; }
+
+        .b1 { background: #edeafd; color: var(--brand); }
+        .b2 { background: #dcf9f0; color: var(--teal-2); }
+        .b3 { background: #ffe8f0; color: var(--pink); }
+        .b4 { background: #fff3d6; color: #c07d02; }
+
+        /* ===== Accesos rápidos ===== */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .quick-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 22px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .quick-link::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--brand), var(--teal));
+            opacity: 0; transition: opacity 0.25s ease;
+        }
+        .quick-link:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-sm);
+            border-color: transparent;
+        }
+        .quick-link:hover::before { opacity: 1; }
+        .quick-link h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+        .quick-link p { color: var(--muted); font-size: 0.87rem; line-height: 1.5; }
+        .q-go { display: inline-block; margin-top: 12px; color: var(--brand); font-weight: 700; font-size: 0.86rem; }
+
+        /* ===== Tabla de servicios / ficha ===== */
+        .ficha {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        .ficha:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+        .ficha .thumb { height: 150px; position: relative; background: linear-gradient(135deg, #2c2391, #6d5ef2); }
+        .ficha .thumb img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: normal; opacity: 0.92; }
+        .ficha .thumb .label {
+            position: absolute;
+            left: 18px; bottom: 14px;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .ficha .body { padding: 20px 22px; }
+        .ficha .body p { color: var(--muted); font-size: 0.9rem; }
+        .ficha .go { margin-top: 12px; display: inline-block; color: var(--brand); font-weight: 700; font-size: 0.88rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+
+        .solo-img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            display: block;
+            margin: 0 auto 30px;
+            max-width: 920px;
+        }
+        .lead {
+            font-size: 1.04rem;
+            color: #3a3f56;
+            padding: 22px 26px;
+            background: #f6f3ff;
+            border-left: 4px solid var(--brand);
+            border-radius: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== Herramientas ===== */
+        .tool-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .tool-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 26px;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-sm); }
+        .tool-card .glyph {
+            width: 58px; height: 58px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 800;
+            font-size: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .tool-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+        .tool-card p { color: var(--muted); font-size: 0.9rem; }
+
+        .g-jira { background: linear-gradient(135deg,#0052CC,#4C9AFF); }
+        .g-slack { background: linear-gradient(135deg,#611f69,#E01E5A); }
+        .g-google { background: linear-gradient(135deg,#4285F4,#34A853); }
+        .g-project { background: linear-gradient(135deg,#107C10,#5bba5b); }
+        .g-visio { background: linear-gradient(135deg,#3955A3,#6B8ACC); }
+        .g-office { background: linear-gradient(135deg,#d83b01,#ff8c42); }
+
+        /* ===== Experiencia ===== */
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 18px;
+            align-items: center;
+            justify-items: center;
+        }
+        .collage img {
+            width: 100%;
+            max-width: 170px;
+            height: 80px;
+            object-fit: contain;
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 12px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .collage img:hover { transform: scale(1.06); box-shadow: var(--shadow-sm); }
+
+        /* ===== Contacto ===== */
+        .contact-list { list-style: none; display: grid; gap: 14px; }
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 18px 22px;
+            transition: all 0.25s ease;
+        }
+        .contact-list li:hover { transform: translateX(6px); border-color: var(--brand); box-shadow: var(--shadow-sm); }
+        .contact-list .ico {
+            width: 46px; height: 46px;
+            flex-shrink: 0;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: linear-gradient(135deg, var(--brand), var(--teal));
+        }
+        .contact-list a { color: var(--brand-dark); font-weight: 600; text-decoration: none; word-break: break-all; }
+        .contact-list a:hover { text-decoration: underline; }
+
+        /* ===== Footer ===== */
+        footer {
+            background: #141734;
+            color: #aeb2d8;
+            text-align: center;
+            padding: 50px 24px 34px;
+            margin-top: 10px;
+        }
+        footer .brand { color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.3rem; display: block; }
+        footer .contacts { margin: 18px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; }
+        footer .contacts a { color: #9d9ff5; text-decoration: none; font-weight: 600; }
+        footer .contacts a:hover { color: #fff; }
+        footer .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px; font-size: 0.82rem; color: #7b80a8; }
+
+        @media (max-width: 640px) {
+            header { padding: 54px 18px 100px; }
+            main.container { margin-top: -56px; }
+            nav.tabs button { padding: 8px 12px; font-size: 0.78rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="grid-bg"></div>
+        <div class="hero-badge">Consultoría en Sistemas y Procesos</div>
+        <img class="logo" src="ms_assets/logo.png" alt="Logo M&amp;S Proyectos y Servicios">
+        <h1>M&amp;S Proyectos y Servicios</h1>
+        <p class="tagline">Transformamos tus procesos y tu tecnología en valor real.</p>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Navegación principal">
+        <button class="tab-btn active" data-tab="inicio" role="tab" aria-selected="true">Inicio</button>
+        <button class="tab-btn" data-tab="soluciones" role="tab" aria-selected="false">Soluciones</button>
+        <button class="tab-btn" data-tab="headhunting" role="tab" aria-selected="false">Headhunting</button>
+        <button class="tab-btn" data-tab="staffing" role="tab" aria-selected="false">Staffing</button>
+        <button class="tab-btn" data-tab="procesos" role="tab" aria-selected="false">Procesos y Servicios</button>
+        <button class="tab-btn" data-tab="herramientas" role="tab" aria-selected="false">Herramientas</button>
+    </nav>
+
+    <main class="container">
+
+        <!-- INICIO -->
+        <section id="inicio" class="tab-panel active" role="tabpanel">
+            <div class="panel-card">
+                <div class="home-hero">
+                    <h2>Bienvenido a M&amp;S Proyectos y Servicios</h2>
+                    <p>Brindamos servicios de procesos y de tecnologías de la información, presentando alternativas de solución para el incremento de valor en tus actividades.</p>
+                    <div class="pill-row">
+                        <span class="pill">&#128101; Talento</span>
+                        <span class="pill">&#9881;&#65039; Procesos</span>
+                        <span class="pill">&#128295; Herramientas</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <span class="eyebrow">Nosotros</span>
+                    <h2 class="heading">Lo que nos define</h2>
+                    <div class="value-grid">
+                        <div class="value-card">
+                            <div class="badge b1">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <h3>Quienes Somos</h3>
+                            <p>Empresa orientada a brindar servicios de procesos y TI, presentando alternativas que incrementan el valor de tus actividades.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="badge b2">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <h3>Nuestro Equipo</h3>
+                            <p>Profesionales altamente capacitados y experimentados en implementaciones de gran envergadura en múltiples rubros.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="badge b3">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            </div>
+                            <h3>Interacción</h3>
+                            <p>Coordinación constante para cubrir necesidades y seguimiento progresivo que asegura el cumplimiento de objetivos.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="badge b4">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                            </div>
+                            <h3>Profesionalismo</h3>
+                            <p>Conocimiento técnico certificado centrado en los valores de compromiso, honestidad y calidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <span class="eyebrow">Servicios</span>
+                    <h2 class="heading">Explora nuestras soluciones</h2>
+                    <div class="quick-grid">
+                        <div class="quick-link" data-goto="soluciones"><h3>Soluciones</h3><p>Visión general en personal, procesos y herramientas.</p><span class="q-go">Ver más &rarr;</span></div>
+                        <div class="quick-link" data-goto="headhunting"><h3>Headhunting</h3><p>Búsqueda y selección del talento ideal.</p><span class="q-go">Ver más &rarr;</span></div>
+                        <div class="quick-link" data-goto="staffing"><h3>Staffing</h3><p>Asignación de personal especializado.</p><span class="q-go">Ver más &rarr;</span></div>
+                        <div class="quick-link" data-goto="procesos"><h3>Procesos y Servicios</h3><p>Optimización, release management, TI y producción.</p><span class="q-go">Ver más &rarr;</span></div>
+                        <div class="quick-link" data-goto="herramientas"><h3>Herramientas</h3><p>Jira, Slack, Google Workspace, Office y más.</p><span class="q-go">Ver más &rarr;</span></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <span class="eyebrow">Experiencia</span>
+                    <h2 class="heading">Con la confianza de grandes aliados</h2>
+                    <div class="collage">
+                        <img src="ms_assets/exp-1.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-2.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-3.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-4.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-5.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-6.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-7.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-8.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-9.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-10.png" alt="Cliente o aliado" loading="lazy">
+                        <img src="ms_assets/exp-11.png" alt="Cliente o aliado" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="section">
+                    <span class="eyebrow">Contacto</span>
+                    <h2 class="heading">Hablemos de tu proyecto</h2>
+                    <div class="contact-list">
+                        <li>
+                            <span class="ico">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+                            </span>
+                            <span>Escríbenos: <a href="mailto:contacto@msproser.com">contacto@msproser.com</a></span>
+                        </li>
+                        <li>
+                            <span class="ico">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            </span>
+                            <span>Visítanos: <a href="https://sites.google.com/msproser.com/principal/" target="_blank" rel="noopener">sites.google.com/msproser.com</a></span>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUCIONES -->
+        <section id="soluciones" class="tab-panel" role="tabpanel">
+            <div class="panel-card">
+                <span class="eyebrow">Servicios</span>
+                <h2 class="heading">Soluciones / Servicios</h2>
+                <p style="color:var(--muted);margin-bottom:28px;max-width:720px;">Cubre las necesidades de tu organización en tres grandes ejes. Haz clic en cada área para ver los detalles.</p>
+                <div class="grid-3">
+                    <div class="ficha" data-goto="headhunting">
+                        <div class="thumb"><img src="ms_assets/banner-personal.png" alt="Personal"><span class="label">Personal</span></div>
+                        <div class="body"><p><strong>Headhunting</strong>; búsqueda de personal. <strong>Staffing</strong>; asignación de personal.</p><span class="go">Ver detalles &rarr;</span></div>
+                    </div>
+                    <div class="ficha" data-goto="procesos">
+                        <div class="thumb"><img src="ms_assets/banner-procesos.png" alt="Procesos"><span class="label">Procesos</span></div>
+                        <div class="body"><p>Optimización de Procesos · Release Management · Gestión de Operación · Gestión de Servicios.</p><span class="go">Ver detalles &rarr;</span></div>
+                    </div>
+                    <div class="ficha" data-goto="herramientas">
+                        <div class="thumb"><img src="ms_assets/banner-herramientas.png" alt="Herramientas"><span class="label">Herramientas</span></div>
+                        <div class="body"><p>Implementación / Capacitación de Jira, Slack, Google Workspace, Project, Visio y Office.</p><span class="go">Ver detalles &rarr;</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HEADHUNTING -->
+        <section id="headhunting" class="tab-panel" role="tabpanel">
+            <div class="panel-card">
+                <span class="eyebrow">Talento</span>
+                <h2 class="heading">Headhunting &mdash; Búsqueda de Personal</h2>
+                <p style="color:var(--muted);margin-bottom:26px;">Buscamos el talento ideal para que encaje en las necesidades de tu organización.</p>
+                <img class="solo-img" src="ms_assets/headhunting.png" alt="Headhunting: búsqueda de personal" loading="lazy">
+                <p class="lead">Nos preocupamos en la búsqueda del talento para que encaje en las necesidades que requiere tu organización. Luego del proceso de búsqueda y filtro el profesional tiene relación directa contigo y trabaja en tu organización.</p>
+                <p class="lead">Realizamos una búsqueda discreta y exhaustiva del perfil requerido y nos aseguramos que cuente con la experiencia y conocimiento que se necesita.</p>
+            </div>
+        </section>
+
+        <!-- STAFFING -->
+        <section id="staffing" class="tab-panel" role="tabpanel">
+            <div class="panel-card">
+                <span class="eyebrow">Talento</span>
+                <h2 class="heading">Staffing &mdash; Asignación de Personal</h2>
+                <p style="color:var(--muted);margin-bottom:26px;">Asignamos personal especializado en distintas disciplinas para las actividades requeridas en tu organización.</p>
+                <img class="solo-img" src="ms_assets/staffing.png" alt="Staffing: asignación de personal" loading="lazy">
+                <p class="lead">Nos preocupamos en la búsqueda y/o asignación de personal especializado en distintas disciplinas para las actividades requeridas en tu organización. Con este esquema, nuestros profesionales forman parte de tu equipo local asistiendo a las reuniones y reportando directamente a tus líderes.</p>
+                <div class="value-grid">
+                    <div class="value-card"><p>Realizamos la gestión laboral del profesional para que te concentres en el crecimiento de tu negocio.</p></div>
+                    <div class="value-card"><p>Ejecutamos un seguimiento progresivo del profesional para asegurar un buen rendimiento y el cumplimiento de los objetivos.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESOS Y SERVICIOS -->
+        <section id="procesos" class="tab-panel" role="tabpanel">
+            <div class="panel-card">
+                <span class="eyebrow">Operaciones</span>
+                <h2 class="heading">Gestión de Procesos y Servicios</h2>
+                <p style="color:var(--muted);margin-bottom:28px;">Optimización, release management, gestión de servicios TI y de producción, con el respaldo de la transformación cultural.</p>
+                <div class="grid-3">
+                    <div class="ficha">
+                        <div class="body">
+                            <h3 style="margin-bottom:8px;font-size:1.1rem;">Transformación Cultural</h3>
+                            <p>Entrenamiento, implementación y seguimiento de servicios/procesos.</p>
+                        </div>
+                    </div>
+                    <div class="ficha">
+                        <div class="body">
+                            <h3 style="margin-bottom:8px;font-size:1.1rem;">Optimización de Procesos</h3>
+                            <p>Revisión de los procesos actuales a fin de identificar puntos de mejora que permitan optimizar los recursos y mejorar el time to market.</p>
+                        </div>
+                    </div>
+                    <div class="ficha">
+                        <div class="body">
+                            <h3 style="margin-bottom:8px;font-size:1.1rem;">Release Management</h3>
+                            <p>Controles y procedimientos para administrar el ciclo de desarrollo de los paquetes a desplegar en producción.</p>
+                        </div>
+                    </div>
+                    <div class="ficha">
+                        <div class="body">
+                            <h3 style="margin-bottom:8px;font-size:1.1rem;">Gestión de Servicios TI</h3>
+                            <p>Acompañamiento para implementar buenas prácticas y procedimientos que faciliten la administración financiera y operativa de los servicios TI.</p>
+                        </div>
+                    </div>
+                    <div class="ficha">
+                        <div class="body">
+                            <h3 style="margin-bottom:8px;font-size:1.1rem;">Gestión de Producción</h3>
+                            <p>Controles en los cambios en producción y gestión de incidencias con métricas KPI's para cumplir los SLA's.</p>
+                        </div>
+                    </div>
+                    <div class="ficha" style="background:linear-gradient(135deg,#221a66,#6d5ef2);color:#fff;">
+                        <div class="body">
+                            <h3 style="margin-bottom:8px;font-size:1.1rem;color:#fff;">Etapas de Optimización</h3>
+                            <p style="color:rgba(255,255,255,0.9);">1. Revisión · 2. Mejoras · 3. Plan · 4. Implementación</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- HERRAMIENTAS -->
+        <section id="herramientas" class="tab-panel" role="tabpanel">
+            <div class="panel-card">
+                <span class="eyebrow">Tecnología</span>
+                <h2 class="heading">Herramientas Corporativas</h2>
+                <p style="color:var(--muted);margin-bottom:28px;">Te ayudamos con la implementación, configuración y capacitación de herramientas corporativas a fin de que queden listas para su administración.</p>
+                <div class="tool-grid">
+                    <div class="tool-card"><div class="glyph g-jira">J</div><h3>Jira</h3><p>Implementación, configuración y capacitación: usuarios, grupos, tableros y flujos de trabajo.</p></div>
+                    <div class="tool-card"><div class="glyph g-slack">S</div><h3>Slack</h3><p>Implementación del site, canales, hilos, workflows e integración con Jira y Google.</p></div>
+                    <div class="tool-card"><div class="glyph g-google">G</div><h3>Google Workspace</h3><p>Usuarios, grupos, reglas de seguridad y administración de licencias.</p></div>
+                    <div class="tool-card"><div class="glyph g-project">P</div><h3>Project</h3><p>Capacitación en el uso de herramientas Office para el seguimiento de proyectos.</p></div>
+                    <div class="tool-card"><div class="glyph g-visio">V</div><h3>Visio</h3><p>Capacitación para el diagrama y diseño de procesos y flujos de trabajo.</p></div>
+                    <div class="tool-card"><div class="glyph g-office">O</div><h3>Office</h3><p>Capacitación en el uso de las herramientas del paquete Office.</p></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <span class="brand">M&amp;S Proyectos y Servicios</span>
+        Consultoría en Sistemas y Procesos
+        <div class="contacts">
+            <a href="mailto:contacto@msproser.com">contacto@msproser.com</a>
+            <a href="https://sites.google.com/msproser.com/principal/" target="_blank" rel="noopener">sites.google.com/msproser.com</a>
+        </div>
+        <div class="copyright">&copy; M&amp;S Proyectos y Servicios. Todos los derechos reservados.</div>
+    </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        function activateTab(name) {
+            tabs.forEach(function (btn) {
+                const active = btn.dataset.tab === name;
+                btn.classList.toggle('active', active);
+                btn.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+            panels.forEach(function (panel) {
+                panel.classList.toggle('active', panel.id === name);
+            });
+            const nav = document.querySelector('nav.tabs');
+            const rect = nav.getBoundingClientRect();
+            window.scrollTo({ top: window.pageYOffset + rect.top, behavior: 'smooth' });
+        }
+
+        tabs.forEach(function (btn) {
+            btn.addEventListener('click', function () { activateTab(btn.dataset.tab); });
+        });
+        document.querySelectorAll('[data-goto]').forEach(function (el) {
+            el.addEventListener('click', function () { activateTab(el.dataset.goto); });
+        });
+    </script>
+
+</body>
+</html>
